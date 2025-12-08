@@ -3,11 +3,9 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { Avatar, Box, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import portrait from '/src/assets/portrait.jpeg'
 
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
 
 // import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 // import EngineeringIcon from '@mui/icons-material/Engineering';
