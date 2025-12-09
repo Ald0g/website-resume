@@ -1,38 +1,14 @@
-// // import { useState } from 'react'
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import { Box, Stack } from '@mui/material';
-import portrait from '/src/assets/portrait.jpeg'
-
-
-// import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
-// import EngineeringIcon from '@mui/icons-material/Engineering';
-
-// import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-// import Diversity2Icon from '@mui/icons-material/Diversity2';
-// import GroupsIcon from '@mui/icons-material/Groups';
-
-
-
-import CareerTimeline from './CareerTimeline';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import SkiingGame from './SkiingGame';
 
 function App() {
-
   return (
-    <>
-      <Stack sx={{alignItems: 'center'}}>
-        <Box sx={{width:0.3}}>
-          <img src={portrait} style={{width: '100%', borderRadius: '30%'}}></img>
-        </Box>
-        {/* <Avatar alt="Remy Sharp" src="/src/assets/portrait.jpeg"/> */}
-        <h1>Mark Lenzner</h1>
-        
-      </Stack>
-      <CareerTimeline></CareerTimeline>
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/game" element={<SkiingGame />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
