@@ -88,7 +88,7 @@ function SkiingGame() {
         startTop -= 24 / 1.5;
 
         gameState.current = {
-            speed: 5,
+            speed: 0,
             distance: 0,
             isPlaying: true,
             isCrashed: false,
@@ -119,11 +119,14 @@ function SkiingGame() {
         // Tile 0 (Map[0], was 2) -> 485, 318
         // Tile 1 (Map[1], was 3) -> 734, 467
 
+        // generatedTileMap.push({ l: 485, t: 318 }); // Index 0
         generatedTileMap.push({ l: 485, t: 318 }); // Index 0
         generatedTileMap.push({ l: 734, t: 467 }); // Index 1
 
-        let tLeft = 734;
-        let tTop = 467;
+        // let tLeft = 734;
+        // let tTop = 467;
+        let tLeft = 734 + 249*1.5;
+        let tTop = 467 + 149*1.5;
 
         // Iterate rest from index 2
         for (let i = 2; i < gameState.current.currentMap.length; i++) {
@@ -160,14 +163,16 @@ function SkiingGame() {
 
         // Gravity / Speed
         if (state.speed < MAX_SPEED) {
-            state.speed += GRAVITY;
-            if (state.speed > MAX_SPEED) state.speed = MAX_SPEED;
+            state.speed += GRAVITY/5;
+            // if (state.speed > MAX_SPEED) state.speed = MAX_SPEED;
         } else if (state.speed > MAX_SPEED) {
             state.speed *= DECAY;
-            if (state.speed < MAX_SPEED) state.speed = MAX_SPEED;
+            // if (state.speed < MAX_SPEED) state.speed = MAX_SPEED;
         }
 
-        if (state.speed < 0.4) state.speed = 0;
+        // if (state.speed < 0.4) state.speed = 0;
+
+        
 
         // Update Position
         const moveDist = state.speed;
@@ -267,7 +272,7 @@ function SkiingGame() {
         if (frameCount.current % 10 === 0) {
             setUiState(prev => ({
                 ...prev,
-                debug: `T:${tileId} I:${state.playerTileIndex} X:${x} Y:${y}`
+                debug: `T:${tileId} I:${state.playerTileIndex} X:${x} Y:${y} speed:${state.speed}`
             }));
         }
 
@@ -279,7 +284,7 @@ function SkiingGame() {
         if (frameCount.current % 10 === 0) {
             setUiState(prev => ({
                 ...prev,
-                debug: `T:${tileId} I:${state.playerTileIndex} X:${x} Y:${y} C:${cell}`
+                debug: `T:${tileId} I:${state.playerTileIndex} X:${x} Y:${y} speed:${state.speed}`
             }));
         }
 
@@ -328,7 +333,7 @@ function SkiingGame() {
 
     const movePlayer = (dir: number) => {
         const state = gameState.current;
-        const newX = state.playerX + dir;
+        const newX = state.playerX - dir;
 
         if (newX >= 0 && newX <= 8) {
             state.playerX = newX;
@@ -399,7 +404,7 @@ function SkiingGame() {
 
             <div className={`sled-game-container ${uiState.loading ? 'loading' : ''}`} ref={gameContainerRef} tabIndex={0} style={{ outline: 'none' }}>
                 <div className="background"></div>
-
+                
                 <div className="game">
                     <div className="tiles" ref={tilesRef}>
                         <img className="tile tile-start" src={getHillTileImg('Start')} style={{ left: '-18px', top: '101px' }} />
