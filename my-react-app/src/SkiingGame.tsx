@@ -42,7 +42,7 @@ function SkiingGame() {
         isPlaying: false,
         isCrashed: false,
         crashState: 0,
-        playerX: 1, // Grid coordinate (0-8)
+        playerX: 0, // Grid coordinate (0-8)
         playerLeft: 424, // CSS Left
         playerTop: 161,  // CSS Top
         mapOffsetLeft: 0,
@@ -93,7 +93,7 @@ function SkiingGame() {
             isPlaying: true,
             isCrashed: false,
             crashState: 0,
-            playerX: 1,
+            playerX: 0,
             playerLeft: startLeft,
             playerTop: startTop,
             mapOffsetLeft: 0,
@@ -425,7 +425,7 @@ function SkiingGame() {
                             return (
                                 <>
                                     <img className="tile tile-finish" src={getHillTileImg('Finish')} style={{ left: lastL + 249, top: lastT + 149 }} />
-                                    <img className="finish-line" src={otherAssets['./assets/SledRacing/FinishLine.png']} style={{ left: lastL + 249 + 77, top: lastT + 149 - 83 }} />
+                                    <img className="finish-line" src={otherAssets['./assets/SledRacing/FinishLine.png']} style={{ left: lastL + 249, top: lastT + 149 }} />
                                 </>
                             );
                         })()}
