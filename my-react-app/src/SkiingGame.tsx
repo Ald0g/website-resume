@@ -5,10 +5,10 @@ import './SledGame.css';
 import { hillTile, penguinRunMap } from './SledGameData';
 
 // Import Assets using Glob for dynamic access
-const hillTileImages = import.meta.glob('./assets/SledRacing/HillTiles/*.png', { eager: true, as: 'url' });
-const penguinAssets = import.meta.glob('./assets/SledRacing/Penguin/*.png', { eager: true, as: 'url' });
-const tubeAssets = import.meta.glob('./assets/SledRacing/Tube/*.png', { eager: true, as: 'url' });
-const otherAssets = import.meta.glob('./assets/SledRacing/*.png', { eager: true, as: 'url' });
+const hillTileImages = import.meta.glob('website-resume/assets/SledRacing/HillTiles/*.png', { eager: true, as: 'url' });
+const penguinAssets = import.meta.glob('website-resume/assets/SledRacing/Penguin/*.png', { eager: true, as: 'url' });
+const tubeAssets = import.meta.glob('website-resume/assets/SledRacing/Tube/*.png', { eager: true, as: 'url' });
+const otherAssets = import.meta.glob('website-resume/assets/SledRacing/*.png', { eager: true, as: 'url' });
 import mapCornerImg from './assets/SledRacing/MapCorner.png'
 import backgroundImg from './assets/SledRacing/Background.png'
 import cloudsImg from './assets/SledRacing/Clouds.png'
