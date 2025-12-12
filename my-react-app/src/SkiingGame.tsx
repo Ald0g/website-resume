@@ -69,26 +69,6 @@ function SkiingGame() {
         debug: '' // Debug info
     });
 
-    const [scale, setScale] = useState(1);
-
-    useEffect(() => {
-        const handleResize = () => {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            // Game is 1000px wide, 610px height
-            // We want to fit it in the screen
-            const scaleX = width / 1000;
-            const scaleY = height / 610;
-            const newScale = Math.min(scaleX, scaleY, 1); // Max scale 1
-            setScale(newScale);
-        };
-
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Init
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     const playerRef = useRef<HTMLDivElement>(null);
     const shadowRef = useRef<HTMLImageElement>(null);
     const tilesRef = useRef<HTMLDivElement>(null);
@@ -435,19 +415,7 @@ function SkiingGame() {
             m: 0
         }}>
 
-            <div
-                className={`sled-game-container ${uiState.loading ? 'loading' : ''}`}
-                ref={gameContainerRef}
-                tabIndex={0}
-                style={{
-                    outline: 'none',
-                    transform: `scale(${scale})`,
-                    transformOrigin: 'center center',
-                    width: '1000px', // Force width for scaling
-                    height: '610px',
-                    position: 'relative'
-                }}
-            >
+            <div className={`sled-game-container ${uiState.loading ? 'loading' : ''}`} ref={gameContainerRef} tabIndex={0} style={{ outline: 'none' }}>
                 {/* <div className="background"></div> */}
                 <img src={backgroundImg} className="background"></img>
                 <img src={cloudsImg} className="clouds"></img>
@@ -519,44 +487,6 @@ function SkiingGame() {
                         {uiState.debug}
                     </div>
                 )} */}
-
-                {/* Mobile Controls Overlay */}
-                {uiState.isPlaying && !gameState.current.isCrashed && (
-                    <>
-                        <div
-                            style={{
-                                position: 'absolute',
-                                left: 0,
-                                top: 0,
-                                width: '50%',
-                                height: '100%',
-                                zIndex: 150,
-                                cursor: 'pointer',
-                                // background: 'rgba(255,0,0,0.1)' // Debug
-                            }}
-                            onPointerDown={(e) => {
-                                e.preventDefault();
-                                movePlayer(-1);
-                            }}
-                        />
-                        <div
-                            style={{
-                                position: 'absolute',
-                                right: 0,
-                                top: 0,
-                                width: '50%',
-                                height: '100%',
-                                zIndex: 150,
-                                cursor: 'pointer',
-                                // background: 'rgba(0,255,0,0.1)' // Debug
-                            }}
-                            onPointerDown={(e) => {
-                                e.preventDefault();
-                                movePlayer(1);
-                            }}
-                        />
-                    </>
-                )}
             </div>
             <AudioPlayer isGamePlaying={!uiState.isPlaying} />
         </Container>
