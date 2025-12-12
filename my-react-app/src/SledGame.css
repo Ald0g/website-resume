@@ -581,7 +581,8 @@
 	background-color: #0184ce;
 	width: 100px;
 	height: 50px;
-	@media (hover: hover) {
-		display: none;
+	display: none;
+	@media only screen and (hover: none) and (pointer: coarse){
+		display: block;
 	}
 }
