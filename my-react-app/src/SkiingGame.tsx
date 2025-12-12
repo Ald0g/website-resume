@@ -2,13 +2,17 @@ import { Box, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import './SledGame.css';
-import { bunnyHillMap, hillTile } from './SledGameData';
+import { bunnyHillMap, expressMap, hillTile, penguinRunMap, ridgeRunMap } from './SledGameData';
 
 // Import Assets using Glob for dynamic access
 const hillTileImages = import.meta.glob('./assets/SledRacing/HillTiles/*.png', { eager: true, as: 'url' });
 const penguinAssets = import.meta.glob('./assets/SledRacing/Penguin/*.png', { eager: true, as: 'url' });
 const tubeAssets = import.meta.glob('./assets/SledRacing/Tube/*.png', { eager: true, as: 'url' });
 const otherAssets = import.meta.glob('./assets/SledRacing/*.png', { eager: true, as: 'url' });
+import mapCornerImg from './assets/SledRacing/MapCorner.png'
+import backgroundImg from './assets/SledRacing/Background.png'
+import cloudsImg from './assets/SledRacing/Clouds.png'
+import AudioPlayer from './AudioPlayer';
 
 // Helper to get asset URL
 const getHillTileImg = (id: string | number) => {
@@ -64,6 +68,7 @@ function SkiingGame() {
     });
 
     const playerRef = useRef<HTMLDivElement>(null);
+    const shadowRef = useRef<HTMLDivElement>(null);
     const tilesRef = useRef<HTMLDivElement>(null);
     const penguinRef = useRef<HTMLImageElement>(null);
     const tubeRef = useRef<HTMLImageElement>(null);
@@ -98,7 +103,7 @@ function SkiingGame() {
             playerTop: startTop,
             mapOffsetLeft: 0,
             mapOffsetTop: 0,
-            currentMap: [...bunnyHillMap.map(String), 'Finish'], // Add finish manually
+            currentMap: [...penguinRunMap.map(String), 'Finish'], // Add finish manually
             tileMap: [],
             playerTileIndex: 0,
             playerHillPos: 0,
@@ -237,11 +242,17 @@ function SkiingGame() {
             playerRef.current.style.marginTop = `${heights[type]}px`;
 
             if (penguinRef.current) penguinRef.current.src = getPenguinImg('back'); // Jump sprite
+            if (shadowRef.current) {
+                shadowRef.current.className = 'shadow-2';
+            }
 
             setTimeout(() => {
                 if (playerRef.current) {
                     playerRef.current.style.transition = 'margin-top 0.3s ease-in';
                     playerRef.current.style.marginTop = '0px';
+                }
+                if (shadowRef.current) {
+                    shadowRef.current.className = 'shadow-1';
                 }
                 if (penguinRef.current && !state.isCrashed) penguinRef.current.src = getPenguinImg('default');
             }, 600);
@@ -403,7 +414,10 @@ function SkiingGame() {
         }}>
 
             <div className={`sled-game-container ${uiState.loading ? 'loading' : ''}`} ref={gameContainerRef} tabIndex={0} style={{ outline: 'none' }}>
-                <div className="background"></div>
+                {/* <div className="background"></div> */}
+                <img src={backgroundImg} className="background"></img>
+                <img src={cloudsImg} className="clouds"></img>
+                <img src={mapCornerImg} className="corner"></img>
                 
                 <div className="game">
                     <div className="tiles" ref={tilesRef}>
@@ -433,7 +447,8 @@ function SkiingGame() {
                         <div className="player" ref={playerRef} style={{ left: 424, top: 161 }}>
                             <div className="name-tag">You</div>
                             <img className="penguin" ref={penguinRef} src={getPenguinImg('default')} />
-                            <img className="tube" ref={tubeRef} src={getTubeImg('default')} />
+                            {/* <img className="tube" ref={tubeRef} src={getTubeImg('default')} /> */}
+                            <img className={'shadow-1'} ref={shadowRef} src={tubeAssets['./assets/SledRacing/Tube/shadow.png']}/>
                         </div>
                     </div>
                 </div>
@@ -465,12 +480,13 @@ function SkiingGame() {
                 )}
 
                 {/* Debug Overlay */}
-                {uiState.isPlaying && (
+                {/* {uiState.isPlaying && (
                     <div style={{ position: 'absolute', top: 10, left: 10, color: 'white', background: 'rgba(0,0,0,0.5)', padding: 4, zIndex: 500, pointerEvents: 'none' }}>
                         {uiState.debug}
                     </div>
-                )}
+                )} */}
             </div>
+            <AudioPlayer isGamePlaying={!uiState.isPlaying}/>
         </Container>
     );
 }

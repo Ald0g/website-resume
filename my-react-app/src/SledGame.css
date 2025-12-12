@@ -289,8 +289,11 @@
 
 .sled-game-container .shadow-1 {
 	height: 23px;
-	margin-left: 508px;
-	margin-top: 132px;
+	/* margin-left: 508px; */
+	/* margin-top: 132px; */
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
 	position: absolute;
 }
 
@@ -304,10 +307,13 @@
 
 .sled-game-container .shadow-2 {
 	height: 23px;
-	margin-left: 510px;
-	margin-top: 210px;
+	/* margin-left: 510px; */
+	/* margin-top: 210px; */
+	margin-top: 80px;
+	margin-left: 20px;
 	position: absolute;
 }
+
 
 .sled-game-container .player {
 	height: 65px;
