@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 function Home() {
     return (
-        <Container maxWidth="md" sx={{ py: 4 }}>
+        <Container maxWidth="md" sx={{ py: 4, bgcolor: 'hsl(225, 100%, 80%)' }}>
             <Stack sx={{ alignItems: 'center' }}>
                 <Box sx={{ width: 0.3 }}>
                     <Link to="/game">

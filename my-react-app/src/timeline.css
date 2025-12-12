@@ -1,0 +1,9 @@
+
+.vertical-timeline-element-date {
+    color: black;
+    font-weight: bold!important;
+    @media (min-width: 1170px) {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
