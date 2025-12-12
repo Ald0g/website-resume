@@ -493,7 +493,7 @@ function SkiingGame() {
 
                 {/* Controls for mobile */}
                 <div className="mobile-controls">
-                    <  onClick={() => movePlayer(-1)} style={{ left: 0 }}>
+                    <button onClick={() => movePlayer(-1)} style={{ left: 0 }}>
                         <KeyboardArrowLeftIcon />
                     </button>
                     <button onClick={() => movePlayer(1)} style={{ right: 0 }}>
