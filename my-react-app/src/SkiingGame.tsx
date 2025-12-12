@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import './SledGame.css';
-import { bunnyHillMap, expressMap, hillTile, penguinRunMap, ridgeRunMap } from './SledGameData';
+import { hillTile, penguinRunMap } from './SledGameData';
 
 // Import Assets using Glob for dynamic access
 const hillTileImages = import.meta.glob('./assets/SledRacing/HillTiles/*.png', { eager: true, as: 'url' });
@@ -67,7 +67,7 @@ function SkiingGame() {
         debug: '' // Debug info
     });
 
-    const playerRef = useRef<HTMLDivElement>(null);
+    const playerRef = useRef<HTMLImageElement>(null);
     const shadowRef = useRef<HTMLDivElement>(null);
     const tilesRef = useRef<HTMLDivElement>(null);
     const penguinRef = useRef<HTMLImageElement>(null);
@@ -130,8 +130,8 @@ function SkiingGame() {
 
         // let tLeft = 734;
         // let tTop = 467;
-        let tLeft = 734 + 249*1.5;
-        let tTop = 467 + 149*1.5;
+        let tLeft = 734 + 249 * 1.5;
+        let tTop = 467 + 149 * 1.5;
 
         // Iterate rest from index 2
         for (let i = 2; i < gameState.current.currentMap.length; i++) {
@@ -168,7 +168,7 @@ function SkiingGame() {
 
         // Gravity / Speed
         if (state.speed < MAX_SPEED) {
-            state.speed += GRAVITY/5;
+            state.speed += GRAVITY / 5;
             // if (state.speed > MAX_SPEED) state.speed = MAX_SPEED;
         } else if (state.speed > MAX_SPEED) {
             state.speed *= DECAY;
@@ -177,7 +177,7 @@ function SkiingGame() {
 
         // if (state.speed < 0.4) state.speed = 0;
 
-        
+
 
         // Update Position
         const moveDist = state.speed;
@@ -418,7 +418,7 @@ function SkiingGame() {
                 <img src={backgroundImg} className="background"></img>
                 <img src={cloudsImg} className="clouds"></img>
                 <img src={mapCornerImg} className="corner"></img>
-                
+
                 <div className="game">
                     <div className="tiles" ref={tilesRef}>
                         <img className="tile tile-start" src={getHillTileImg('Start')} style={{ left: '-18px', top: '101px' }} />
@@ -448,7 +448,7 @@ function SkiingGame() {
                             <div className="name-tag">You</div>
                             <img className="penguin" ref={penguinRef} src={getPenguinImg('default')} />
                             {/* <img className="tube" ref={tubeRef} src={getTubeImg('default')} /> */}
-                            <img className={'shadow-1'} ref={shadowRef} src={tubeAssets['./assets/SledRacing/Tube/shadow.png']}/>
+                            <img className={'shadow-1'} ref={shadowRef} src={tubeAssets['./assets/SledRacing/Tube/shadow.png']} />
                         </div>
                     </div>
                 </div>
@@ -486,7 +486,7 @@ function SkiingGame() {
                     </div>
                 )} */}
             </div>
-            <AudioPlayer isGamePlaying={!uiState.isPlaying}/>
+            <AudioPlayer isGamePlaying={!uiState.isPlaying} />
         </Container>
     );
 }
