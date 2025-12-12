@@ -568,3 +568,20 @@
 	background-color: #0184ce73;
 	cursor: pointer;
 }
+
+.mobile-controls {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.mobile-controls button {
+	border-radius: 20px;
+	background-color: #0184ce;
+	width: 100px;
+	height: 50px;
+	@media (min-width: 1170px) {
+		display: none;
+	}
+}

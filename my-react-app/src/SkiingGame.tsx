@@ -15,6 +15,9 @@ import backgroundImg from './assets/SledRacing/Background.png'
 import cloudsImg from './assets/SledRacing/Clouds.png'
 import AudioPlayer from './AudioPlayer';
 
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+
 
 // Helper to get asset URL
 const getHillTileImg = (id: string | number) => {
@@ -487,6 +490,16 @@ function SkiingGame() {
                         {uiState.debug}
                     </div>
                 )} */}
+
+                {/* Controls for mobile */}
+                <div className="mobile-controls">
+                    <  onClick={() => movePlayer(-1)} style={{ left: 0 }}>
+                        <KeyboardArrowLeftIcon />
+                    </button>
+                    <button onClick={() => movePlayer(1)} style={{ right: 0 }}>
+                        <KeyboardArrowRightIcon />
+                    </button>
+                </div>
             </div>
             <AudioPlayer isGamePlaying={!uiState.isPlaying} />
         </Container>
