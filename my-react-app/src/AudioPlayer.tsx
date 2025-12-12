@@ -32,12 +32,12 @@ const AudioPlayer = ({ isGamePlaying }: Props) => {
   }, [isGamePlaying]);
 
   // Optional: Reset state when the song ends
-//   useEffect(() => {
-//     audioRef.current.addEventListener('ended', () => setIsPlaying(false));
-//     return () => {
-//       audioRef.current.removeEventListener('ended', () => setIsPlaying(false));
-//     };
-//   }, []);
+  useEffect(() => {
+    audioRef.current?.addEventListener('ended', () => audioRef.current?.play());
+    return () => {
+      audioRef.current?.removeEventListener('ended', () => audioRef.current?.play());
+    };
+  }, []);
 
   // Corrected useEffect block
   // useEffect(() => {
