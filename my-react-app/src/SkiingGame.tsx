@@ -20,7 +20,7 @@ console.log(hillTileImages)
 const getHillTileImg = (id: string | number) => {
     // try direct match
     const key = `./assets/SledRacing/HillTiles/${id}.png`;
-    console.log('key', key, hillTileImages[key]);
+    console.log('key', key, hillTileImages[key], hillTileImages[key][0]);
     if (hillTileImages[key]) return hillTileImages[key];
     return '';
 };
