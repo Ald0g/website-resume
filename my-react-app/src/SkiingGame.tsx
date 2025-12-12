@@ -67,8 +67,8 @@ function SkiingGame() {
         debug: '' // Debug info
     });
 
-    const playerRef = useRef<HTMLImageElement>(null);
-    const shadowRef = useRef<HTMLDivElement>(null);
+    const playerRef = useRef<HTMLDivElement>(null);
+    const shadowRef = useRef<HTMLImageElement>(null);
     const tilesRef = useRef<HTMLDivElement>(null);
     const penguinRef = useRef<HTMLImageElement>(null);
     const tubeRef = useRef<HTMLImageElement>(null);
