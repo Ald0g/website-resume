@@ -496,7 +496,7 @@ function SkiingGame() {
                     <button onClick={() => movePlayer(-1)} style={{ left: 0 }}>
                         <KeyboardArrowLeftIcon sx={{ color: 'white' }}/>
                     </button>
-                    <div style={{display: 'inline-block',width: '20vw'}}/>
+                    <div style={{display: 'inline-block',width: '40vw'}}/>
                     <button onClick={() => movePlayer(1)} style={{ right: 0 }}>
                         <KeyboardArrowRightIcon sx={{ color: 'white' }}/>
                     </button>
