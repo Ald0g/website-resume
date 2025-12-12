@@ -494,11 +494,11 @@ function SkiingGame() {
                 {/* Controls for mobile */}
                 <div className="mobile-controls">
                     <button onClick={() => movePlayer(-1)} style={{ left: 0 }}>
-                        <KeyboardArrowLeftIcon />
+                        <KeyboardArrowLeftIcon sx={{ color: 'white' }}/>
                     </button>
                     <div style={{display: 'inline-block',width: '50px'}}/>
                     <button onClick={() => movePlayer(1)} style={{ right: 0 }}>
-                        <KeyboardArrowRightIcon />
+                        <KeyboardArrowRightIcon sx={{ color: 'white' }}/>
                     </button>
                 </div>
             </div>
