@@ -14,6 +14,8 @@ import backgroundImg from './assets/SledRacing/Background.png'
 import cloudsImg from './assets/SledRacing/Clouds.png'
 import AudioPlayer from './AudioPlayer';
 
+console.log(hillTileImages)
+
 // Helper to get asset URL
 const getHillTileImg = (id: string | number) => {
     // try direct match

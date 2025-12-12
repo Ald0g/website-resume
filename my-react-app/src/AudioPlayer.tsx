@@ -20,7 +20,6 @@ const AudioPlayer = ({ isGamePlaying }: Props) => {
   // };
 
   useEffect(() => {
-    console.log('here', isGamePlaying)
     const audioEl = audioRef.current;
     if (!audioEl) return;
 
