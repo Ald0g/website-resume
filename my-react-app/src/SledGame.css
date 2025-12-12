@@ -575,7 +575,7 @@
 	left: 50%;
 	transform: translateX(-50%);
 	touch-action: manipulation;
-	color: 'black';
+	color: white;
 }
 
 .mobile-controls button {
