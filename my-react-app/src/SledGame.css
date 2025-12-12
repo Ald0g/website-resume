@@ -581,7 +581,7 @@
 	background-color: #0184ce;
 	width: 100px;
 	height: 50px;
-	@media (min-width: 1170px) {
+	@media (hover: hover) {
 		display: none;
 	}
 }
