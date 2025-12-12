@@ -2,8 +2,12 @@ import { useRef, useEffect } from 'react';
 
 import music from '@/assets/SledRacing/Music.mp3'
 
-const AudioPlayer = ({isGamePlaying}) => {
-  const audioRef = useRef(null);
+type Props = {
+  isGamePlaying: boolean;
+}
+
+const AudioPlayer = ({ isGamePlaying }: Props) => {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   // const [isPlaying, setIsPlaying] = useState(false);
 
   // useEffect(() => {
@@ -17,10 +21,14 @@ const AudioPlayer = ({isGamePlaying}) => {
 
   useEffect(() => {
     console.log('here', isGamePlaying)
+    const audioEl = audioRef.current;
+    if (!audioEl) return;
+
     if (isGamePlaying) {
-      audioRef.current.pause();
+      audioEl.pause();
     } else {
-      audioRef.current.play();
+      // play() returns a Promise; we can optionally handle it but keep simple here
+      void audioEl.play();
     }
   }, [isGamePlaying]);
 
