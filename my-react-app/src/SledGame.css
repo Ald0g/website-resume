@@ -583,6 +583,6 @@
 	height: 50px;
 	display: none;
 	@media only screen and (hover: none) and (pointer: coarse){
-		display: block;
+		display: inline-block;
 	}
 }
